@@ -1,3 +1,9 @@
+import SignIn from "@/components/auth/SignIn"
+
 export default function Home() {
-	return <main>Hello World</main>
+	return (
+		<main className="flex min-h-screen flex-col justify-center">
+			<SignIn />
+		</main>
+	)
 }
