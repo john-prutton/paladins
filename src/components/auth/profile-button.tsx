@@ -44,7 +44,7 @@ export function ProfileButton() {
 
 						<Button
 							variant={"destructive"}
-							onClick={() => signOut()}
+							onClick={() => signOut({ callbackUrl: "/" })}
 						>
 							Sign out
 						</Button>
