@@ -5,18 +5,25 @@ const unprotectedRoutes = ["/"]
 
 export default withAuth(
 	async function middleware(req) {
-		if (unprotectedRoutes.includes(req.nextUrl.pathname)) return
-
+		// Get token
 		const sessionToken =
 			req.cookies.get("next-auth.session-token")?.value ||
 			req.cookies.get("__Secure-next-auth.session-token")?.value
 
 		const isAuth = !!sessionToken
 
+		// Check if they are on a unprotected page
+		if (unprotectedRoutes.includes(req.nextUrl.pathname)) {
+			if (isAuth)
+				return NextResponse.redirect(new URL(`/dashboard`, req.url))
+			return
+		}
+
+		// Redirect unauthed users to the signin page
 		if (!isAuth)
 			return NextResponse.redirect(
 				new URL(
-					`/api/auth/signin?callback=${req.nextUrl.pathname}`,
+					`/api/auth/signin?callbackUrl=${req.nextUrl.pathname}`,
 					req.url
 				)
 			)
