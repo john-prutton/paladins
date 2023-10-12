@@ -1,7 +1,10 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
+
 import NextAuthProvider from "@/lib/auth/Provider"
+import { TrpcProvider } from "@/lib/trpc/provider"
+
 import { Toaster } from "@/components/ui/toaster"
 import { Navbar } from "@/components/layout/navbar"
 
@@ -21,9 +24,11 @@ export default function RootLayout({
 		<html lang="en" className="dark">
 			<body className={inter.className}>
 				<NextAuthProvider>
-					<Navbar />
-					{children}
-					<Toaster />
+					<TrpcProvider>
+						<Navbar />
+						{children}
+						<Toaster />
+					</TrpcProvider>
 				</NextAuthProvider>
 			</body>
 		</html>
