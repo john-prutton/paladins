@@ -3,7 +3,7 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 
 import NextAuthProvider from "@/lib/auth/Provider"
-import { TrpcProvider } from "@/lib/trpc/provider"
+import { TrpcProvider } from "@/app/_trpc/provider"
 
 import { Toaster } from "@/components/ui/toaster"
 import { Navbar } from "@/components/layout/navbar"

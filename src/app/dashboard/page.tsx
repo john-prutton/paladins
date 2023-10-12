@@ -1,10 +1,6 @@
-import { TestTrpc } from "@/components/test-trpc"
+import { trpcServerClient } from "../_trpc/server-client"
 
 export default async function DashboardPage() {
-	return (
-		<main>
-			you should be logged in
-			<TestTrpc />
-		</main>
-	)
+	const data = trpcServerClient.testing()
+	return <main>{data}</main>
 }
