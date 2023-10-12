@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 
 import DefaultImage from "@/../public/default-pic.png"
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
+import Link from "next/link"
 
 export function ProfileButton() {
 	const { data: session, status } = useSession()
@@ -37,7 +38,10 @@ export function ProfileButton() {
 					</PopoverTrigger>
 
 					<PopoverContent className="flex w-48 flex-col gap-2">
-						<Button variant={"secondary"}>View Profile</Button>
+						<Button variant={"secondary"} asChild>
+							<Link href={"/users/me"}>Profile</Link>
+						</Button>
+
 						<Button
 							variant={"destructive"}
 							onClick={() => signOut()}
