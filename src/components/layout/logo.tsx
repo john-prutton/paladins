@@ -17,10 +17,7 @@ export function Logo() {
 				className="ml-auto rounded-full"
 				sizes="100vmax"
 			/>
-			<p
-				style={{ marginTop: 0 }}
-				className={cn(font.className, "text-3xl text-primary")}
-			>
+			<p className={cn(font.className, "text-3xl text-primary")}>
 				Paladins
 			</p>
 		</div>
